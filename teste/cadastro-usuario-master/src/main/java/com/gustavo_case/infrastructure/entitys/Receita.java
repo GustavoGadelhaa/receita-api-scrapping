@@ -30,8 +30,6 @@ public class Receita {
     @Column(nullable = true)
     private String url;
 
-    @Column(nullable = false)
-    private Double preco;
 
     @Column
     private List<String>ingredientes;

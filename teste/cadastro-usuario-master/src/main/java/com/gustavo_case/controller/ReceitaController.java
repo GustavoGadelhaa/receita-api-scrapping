@@ -55,7 +55,11 @@ public class ReceitaController {
     }
 
 
+   @GetMapping
+   public ResponseEntity<List<Receita>>listarReceitas(){
+        return ResponseEntity.ok(receitaService.listarReceitas());
 
+   }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void>deletarPorId(@PathVariable Integer id){

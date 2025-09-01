@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -23,7 +24,7 @@ public class ReceitaService {
 
     private final ReceitaRepository receitaRepository;
 
-    public Receita importaReceita(Receita receita) throws IOException {
+    public Receita importaReceita(Receita receita) throws IOException, SQLException {
         String url = receita.getUrl();
 
         // Pegando HTML da página
@@ -45,7 +46,6 @@ public class ReceitaService {
         receita.setIngredientes(ingredientes);
         receita.setTitulo(titulo);
         receita.setDescricao(descricao);
-
         return receitaRepository.save(receita);
     }
 
@@ -54,11 +54,14 @@ public class ReceitaService {
         return receitaRepository.save(receita);
     }
 
-    public List<Receita> buscarPorTitulo(String titulo){
+    public List<Receita> buscarPorTitulo(String titulo) {
         return receitaRepository.findReceitaByTituloIgnoreCase(titulo);
     }
 
 
+    public List<Receita>listarReceitas(){
+        return  receitaRepository.findAll();
+    }
 
 
     public void deletarPorId(Integer id) {
@@ -72,12 +75,11 @@ public class ReceitaService {
                 () -> new NoSuchElementException());
     }
 
-    public Receita atualizarReceitaPorId(Integer id, Receita receita ){
+    public Receita atualizarReceitaPorId(Integer id, Receita receita) {
         Receita receitaNova = receitaRepository.findById(id).orElseThrow(
                 () -> new NoSuchElementException());
         receitaNova.setTitulo(receita.getTitulo());
         receitaNova.setDescricao(receita.getDescricao());
-        receitaNova.setPreco(receita.getPreco());
         return receitaRepository.save(receitaNova);
     }
 }

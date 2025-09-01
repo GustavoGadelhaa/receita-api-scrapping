@@ -2,6 +2,8 @@ package com.gustavo_case.infrastructure.entitys;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -17,13 +19,22 @@ public class Confeiteiro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    @Column
     private String nome;
 
-    @Column(unique = true, nullable = false)
+    @Column
+    private String nacionalidade;
+
+    @Column
     private String email;
 
-    @Column(nullable = false)
+    @Column
+    private String url;
+
+    @Column
+    private String dataNascimento;
+
+    @Column
     private String senha;
 
     @OneToMany(mappedBy = "confeiteiro", cascade = CascadeType.ALL, orphanRemoval = true)

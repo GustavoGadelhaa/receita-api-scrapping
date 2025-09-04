@@ -1,6 +1,7 @@
-# 🍽️ PROJETO DE EXTRAÇÃO DE DADOS DE RECEITAS E CHEFS - 
+# 🍽️ PROJETO DE EXTRAÇÃO DE DADOS DE RECEITAS E CHEFS 
+**Projeto em Andamento ⚠️**
 
-##**Projeto em Andamento ⚠️**
+----------------------------
 
 Este projeto tem como objetivo **extrair dados de receitas e chefs/confeiteiros** de páginas públicas,  
 utilizando **Java + Spring Boot + Jsoup**.  

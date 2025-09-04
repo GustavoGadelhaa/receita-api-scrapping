@@ -1,5 +1,7 @@
 package com.gustavo_case.business;
 
+import com.gustavo_case.business.DTO.ReceitaRequestDTO;
+import com.gustavo_case.business.DTO.ReceitaResponseDTO;
 import com.gustavo_case.infrastructure.entitys.ReceitaEntity;
 import com.gustavo_case.infrastructure.repository.ReceitaRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +22,7 @@ public class ReceitaService {
 
     private final ReceitaRepository receitaRepository;
 
-    public ReceitaEntity importaReceita(ReceitaEntity receita) throws IOException, SQLException {
+    public ReceitaResponseDTO importaOuCriarReceita(ReceitaRequestDTO receita) throws IOException, SQLException {
         String url = receita.getUrl();
 
         // Pegando HTML da página

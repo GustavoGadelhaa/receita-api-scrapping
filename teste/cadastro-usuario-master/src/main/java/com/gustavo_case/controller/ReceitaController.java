@@ -1,5 +1,6 @@
 package com.gustavo_case.controller;
 
+import com.gustavo_case.business.DTO.ReceitaRequestDTO;
 import com.gustavo_case.business.ReceitaService;
 import com.gustavo_case.infrastructure.entitys.ReceitaEntity;
 import lombok.RequiredArgsConstructor;
@@ -17,9 +18,9 @@ public class ReceitaController {
 
 
     @PostMapping("/importar")
-    public ResponseEntity<?> importarReceita(@RequestBody ReceitaEntity receita) {
+    public ResponseEntity<?> importarReceita(@RequestBody ReceitaRequestDTO receita) {
         try {
-            ReceitaEntity salva = receitaService.importaReceita(receita);
+            ReceitaEntity salva = receitaService.importaOuCriarReceita(receita);
             return ResponseEntity.ok(salva);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
